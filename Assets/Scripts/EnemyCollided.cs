@@ -18,11 +18,15 @@ public class EnemyCollided : MonoBehaviour {
     
     void OnCollisionEnter2D(Collision2D collision) {
         
-        AudioSource.PlayClipAtPoint(audio.clip, transform.position);
-        Destroy(gameObject);
+        
         DamageController damageController = collision.gameObject.GetComponent<DamageController>();
         if(damageController != null) {
             damageController.Damage(collideAttack);
         }
+		AudioSource.PlayClipAtPoint(audio.clip, transform.position);
+		if (transform.position.y > collision.transform.position.y) {
+			Destroy(gameObject);
+		}
+
     }
 }

@@ -91,6 +91,7 @@ public class GameController : MonoBehaviour {
 	private IEnumerator WaveEnding() {
 		enemyStats.text = "Score: " + totalPoints + "\n";
 		List<string> keys = new List<string>(enemiesKilled.Keys);
+		keys.Sort ();
 		foreach(string key in keys) {
 			enemyStats.text += key + ": " + enemiesKilled[key] + "\n";
 		}

@@ -1,7 +1,7 @@
-﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Galaga", "Assembly-CSharp.csproj", "{12D7A22F-1A41-EEB1-EB2A-DE689ED20F21}"
+# Visual Studio 2008
+
+Project("{4947D423-AFD0-B370-5611-7E59E1955EF6}") = "Galaga", "Assembly-CSharp.csproj", "{12D7A22F-1A41-EEB1-EB2A-DE689ED20F21}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
