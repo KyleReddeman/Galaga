@@ -469,7 +469,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 5
   health: 1
-  points: 100
+  points: 200
   name: Armored Unit
 --- !u!212 &212304862586298798
 SpriteRenderer:
