@@ -438,6 +438,8 @@ MonoBehaviour:
   health: 1
   points: 150
   name: Shooter Unit
+  explosion: {fileID: 198874040481636008, guid: 3d86741ccf573f3468b11be45e61682c,
+    type: 2}
 --- !u!114 &114270108996358812
 MonoBehaviour:
   m_ObjectHideFlags: 1

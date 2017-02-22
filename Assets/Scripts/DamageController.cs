@@ -11,6 +11,7 @@ public class DamageController : MonoBehaviour {
 	private HealthConroller healthController;
 	private GameController gameController;
 	private GameObject gameManager;
+	public ParticleSystem explosion;
 
 	// Use this for initialization
 	void Start() {
@@ -30,6 +31,7 @@ public class DamageController : MonoBehaviour {
 		healthController.UpdateUI();
 		string tag = gameObject.tag;
 		if(health <= 0f && tag != "Ground") {
+			Explode();
 			Destroy(gameObject);
 			if(tag == "Enemy") {
 				int enemiesShot = gameController.GetEnemiesKilled(name);
@@ -38,5 +40,11 @@ public class DamageController : MonoBehaviour {
 				gameController.SetScoreText("        Score: " + gameController.GetScore());
 			}
 		}
+	}
+
+	public void Explode() {
+		GameObject particle = Instantiate(explosion.gameObject, gameObject.transform.position, Quaternion.identity);
+		explosion.Play();
+		Destroy(particle, 1f);
 	}
 }

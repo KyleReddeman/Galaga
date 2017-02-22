@@ -573,6 +573,8 @@ MonoBehaviour:
   health: 5
   points: 0
   name: 
+  explosion: {fileID: 198874040481636008, guid: 3d86741ccf573f3468b11be45e61682c,
+    type: 2}
 --- !u!1 &415893431
 GameObject:
   m_ObjectHideFlags: 0
@@ -1800,6 +1802,7 @@ MonoBehaviour:
   health: 15
   points: 0
   name: 
+  explosion: {fileID: 0}
 --- !u!1 &1977603465
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
@@ -62,6 +63,19 @@ public class GameController : MonoBehaviour {
 			message.text += "\nScore: " + totalPoints;
 
 			PlayerPrefs.SetInt("highScore", (int)highScore);
+			//StartCoroutine(WaitForRestart());
+			while(!Input.GetButtonDown("Submit")) {
+				yield return null;
+			}
+			SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+		}
+	}
+
+	private IEnumerator WaitForRestart() {
+		while(!Input.GetButtonDown("Submit")) {
+			yield return null;
+			SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 		}
 	}
 

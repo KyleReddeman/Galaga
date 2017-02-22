@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyCollided : MonoBehaviour {
 
-    public float collideAttack = 1f;
+    public float collideAttack;
     public AudioSource audio;
 	// Use this for initialization
 	void Start () {
@@ -25,6 +25,7 @@ public class EnemyCollided : MonoBehaviour {
         }
 		AudioSource.PlayClipAtPoint(audio.clip, transform.position);
 		if (transform.position.y > collision.transform.position.y) {
+			gameObject.GetComponent<DamageController>().Explode();
 			Destroy(gameObject);
 		}
 
