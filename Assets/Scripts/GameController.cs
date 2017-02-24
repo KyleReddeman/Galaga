@@ -18,6 +18,7 @@ public class GameController : MonoBehaviour {
 	public Text enemyStats;
 	public Text highScore;
 	public Text score;
+	public Text paused;
 	public float startDelay;
 	public float endDelay;
 
@@ -35,7 +36,15 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update() {
-		
+		if(Input.GetButtonDown("Cancel")) {
+			paused.enabled = !paused.enabled;
+			if(Time.timeScale == 1f) {
+				Time.timeScale = 0f;
+			}
+			else {
+				Time.timeScale = 1f;
+			}
+		}
 	}
 
 	private IEnumerator GameLoop() {

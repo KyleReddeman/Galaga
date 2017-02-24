@@ -55,4 +55,8 @@ public class SpawnEnemies : MonoBehaviour {
         minSpawnTime = min;
         maxSpawnTime = max;
     }
+
+	public Transform[] GetSpawnPoints() {
+		return spawnPoints;
+	}
 }

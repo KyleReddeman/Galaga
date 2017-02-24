@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 198874040481636008}
   - component: {fileID: 199352414239508818}
   m_Layer: 0
-  m_Name: Particle System
+  m_Name: Explosion
   m_TagString: Particles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49,7 +49,7 @@ ParticleSystem:
   m_GameObject: {fileID: 1598830151985954}
   serializedVersion: 5
   lengthInSec: 5
-  speed: 15
+  simulationSpeed: 15
   looping: 0
   prewarm: 0
   playOnAwake: 1
