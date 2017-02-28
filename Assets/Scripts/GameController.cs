@@ -13,6 +13,8 @@ public class GameController : MonoBehaviour {
 	private WaitForSeconds endWait;
 	private float totalPoints = 0f;
 	private Dictionary<string, int> enemiesKilled;
+	private float previousPlayerHealth;
+	private float previousGroundHealth;
      
 	public Text message;
 	public Text enemyStats;
@@ -21,6 +23,7 @@ public class GameController : MonoBehaviour {
 	public Text paused;
 	public float startDelay;
 	public float endDelay;
+	public GameObject healthDrop;
 
 	// Use this for initializat;ion
 	void Start() {
@@ -90,6 +93,8 @@ public class GameController : MonoBehaviour {
 
 	private IEnumerator WaveStarting() {
 		message.text = "Wave " + roundNumber;
+		previousPlayerHealth = healthController.GetPlayerHealth();
+		previousGroundHealth = healthController.GetGroundHealth();
 		int numEnemies = 2 * roundNumber + 3;
 		float min = spawnEnemies.minSpawnTime - .2f;
 		float max = spawnEnemies.maxSpawnTime - .1f;
@@ -112,6 +117,9 @@ public class GameController : MonoBehaviour {
 	}
 
 	private IEnumerator WaveEnding() {
+		if(previousGroundHealth == healthController.GetGroundHealth() && previousPlayerHealth == healthController.GetPlayerHealth()) {
+			Instantiate(healthDrop, spawnEnemies.camera.ViewportToWorldPoint(new Vector3(.5f, 1f, 10f)), Quaternion.identity);
+		}
 		enemyStats.text = "Score: " + totalPoints + "\n";
 		List<string> keys = new List<string>(enemiesKilled.Keys);
 		keys.Sort ();

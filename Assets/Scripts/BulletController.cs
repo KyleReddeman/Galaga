@@ -7,7 +7,7 @@ public class BulletController : MonoBehaviour {
     private Rigidbody2D rigid;
     public AudioSource audio;
     public float speed = 3f;
-    public float damage = 1f;
+    public int damage = 1;
 
 	// Use this for initialization
 	void Start () {

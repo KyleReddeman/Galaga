@@ -6,7 +6,6 @@ public class PlayerFire : MonoBehaviour {
 
     private bool fired = false;
     public GameObject projectile;
-    public float meh = 6;
     public Transform bulletSpawnPosition;
     public AudioSource audio;
     public float fireDelay = .2f;

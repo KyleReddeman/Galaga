@@ -198,7 +198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 2
-  health: 1
+  health: 2
   points: 100
   name: Infantry Unit
   explosion: {fileID: 198874040481636008, guid: 3d86741ccf573f3468b11be45e61682c,

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class DamageController : MonoBehaviour {
 
-	public float startingHealth;
-	public float health;
-	public float points;
+	public int startingHealth;
+	public int health;
+	public int points;
 	public string name = "";
 	private HealthConroller healthController;
 	private GameController gameController;
@@ -26,7 +26,7 @@ public class DamageController : MonoBehaviour {
 		
 	}
 
-	public void Damage(float damage) {
+	public void Damage(int damage) {
 		health -= damage;
 		healthController.UpdateUI();
 		string tag = gameObject.tag;
@@ -46,5 +46,10 @@ public class DamageController : MonoBehaviour {
 		GameObject particle = Instantiate(explosion.gameObject, gameObject.transform.position, Quaternion.identity);
 		explosion.Play();
 		Destroy(particle, 1f);
+	}
+
+	public void AddHealth(int healthBonus) {
+		health = Mathf.Min(health + healthBonus, startingHealth);
+		healthController.UpdateUI();
 	}
 }

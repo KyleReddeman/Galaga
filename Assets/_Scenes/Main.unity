@@ -473,10 +473,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 1321274349426148, guid: 4d0ddd5439d4e07478b384a4a98f7662, type: 2}
-  meh: 6
   bulletSpawnPosition: {fileID: 1710941326}
   audio: {fileID: 331018594}
-  fireDelay: 0.2
+  fireDelay: 0.25
 --- !u!82 &331018594
 AudioSource:
   m_ObjectHideFlags: 0
@@ -572,7 +571,7 @@ MonoBehaviour:
   startingHealth: 5
   health: 5
   points: 0
-  name: 
+  name: Player
   explosion: {fileID: 198874040481636008, guid: 3d86741ccf573f3468b11be45e61682c,
     type: 2}
 --- !u!1 &415893431
@@ -715,7 +714,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 526094577}
-  minSpawnTime: 2
+  minSpawnTime: 2.6
   maxSpawnTime: 5
   numberOfEnemies: 0
   enemies:
@@ -760,6 +759,7 @@ MonoBehaviour:
   paused: {fileID: 1246315411}
   startDelay: 2
   endDelay: 3
+  healthDrop: {fileID: 1969781116043820, guid: 63f6cb5b7cbcc09439409d52dc021196, type: 2}
 --- !u!1 &526094573
 GameObject:
   m_ObjectHideFlags: 0
@@ -1875,9 +1875,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 10
-  health: 15
+  health: 10
   points: 0
-  name: 
+  name: Ground
   explosion: {fileID: 0}
 --- !u!1 &1977603465
 GameObject:

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyCollided : MonoBehaviour {
 
-    public float collideAttack;
+	public int collideAttack;
     public AudioSource audio;
 	// Use this for initialization
 	void Start () {

@@ -34,8 +34,8 @@ public class HealthConroller : MonoBehaviour {
     }
 
     public void UpdateUI() {
-        float playerHealth = playerDamageController.health;
-        float groundHealth = groundDamageController.health;
+		float playerHealth =GetPlayerHealth();
+		float groundHealth = GetGroundHealth();
         playerSlider.value = playerHealth;
         groundSlider.value = groundHealth;
 
@@ -48,4 +48,12 @@ public class HealthConroller : MonoBehaviour {
     public bool GameOver() {
         return gameOver;
     }
+
+	public int GetPlayerHealth() {
+		return playerDamageController.health;
+	}
+
+	public int GetGroundHealth() {
+		return groundDamageController.health;
+	}
 }
