@@ -30,7 +30,7 @@ public class SpawnEnemies : MonoBehaviour {
 
     public void Spawn() {
         numberOfEnemies++;
-        int spawnPoint = Random.Range(0, 5);
+		int spawnPoint = Random.Range(0, spawnPoints.Length);
         GameObject enemy = enemies[Random.Range(0, enemies.Length)];
         Instantiate(enemy, spawnPoints[spawnPoint].position, Quaternion.identity);
         float spawnTime = Random.Range(minSpawnTime, maxSpawnTime);

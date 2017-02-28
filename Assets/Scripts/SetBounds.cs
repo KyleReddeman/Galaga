@@ -10,7 +10,7 @@ public class SetBounds : MonoBehaviour {
     public Camera camera;
 	// Use this for initialization
 	void Start () {
-        Vector3 posistion = camera.ScreenToWorldPoint(new Vector3(0f, 0f, 0f));
+		Vector3 posistion = camera.ViewportToWorldPoint(new Vector3(0f, 0f, 0f));
         posistion = new Vector3(posistion.x - .1f, posistion.y + .15f, posistion.z);
 
         leftBound.position = posistion;
