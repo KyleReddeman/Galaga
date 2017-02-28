@@ -6,16 +6,30 @@ using UnityEngine;
 public class Boss1Controller : MonoBehaviour {
 
 	public float attackMovementSpeed;
-	public float enteranceMovermentSpeed;
+	public float enteranceTime;
+	public float doorMovementTime;
 	public float glowCycles;
+	public Transform leftDoor;
+	public Transform rightDoor;
 	public GameObject[] enemies;
 
 	private Light shipGlow;
 	private Light coreGlow;
 	private Rigidbody2D rigid;
+	private Rigidbody2D leftDoorRigid;
+	private Rigidbody2D rightDoorRigid;
+	private bool defeatedBoss;
+	public bool DefeatedBoss {
+		get {
+			return defeatedBoss;
+		}
+	}
 
 	void Awake() {
 		rigid = gameObject.GetComponent<Rigidbody2D>();
+		leftDoorRigid = leftDoor.gameObject.GetComponent<Rigidbody2D>();
+		rightDoorRigid = rightDoor.gameObject.GetComponent<Rigidbody2D>();
+
 		Light[] lights = gameObject.GetComponentsInChildren<Light>();
 		foreach(Light light in lights) {
 			if(light.gameObject.transform.parent != null) {
@@ -52,16 +66,17 @@ public class Boss1Controller : MonoBehaviour {
 
 	private IEnumerator EnterScene() {
 		while(!EnteredScene()) {
-			
 			yield return null;
 		}
-		rigid.velocity = Vector3.zero;
+		rigid.velocity = Vector2.zero;
 	}
 
 	private IEnumerator BattleEnemy() {
 		yield return new WaitForSeconds(2f);
 		while(true) {
-			yield return StartCoroutine(SpawnEnemy());
+			yield return StartCoroutine(OpenDoors());
+			yield return new WaitForSeconds(2f);
+			yield return StartCoroutine(CloseDoors());
 			yield return new WaitForSeconds(2f);
 		}
 	}
@@ -78,6 +93,33 @@ public class Boss1Controller : MonoBehaviour {
 		}
 		coreGlow.range = .25f;
 		coreGlow.intensity = 0f;
+		yield return null;
+	}
+
+	private IEnumerator OpenDoors() {
+		
+		while(leftDoor.position.x > -.55f && rightDoor.position.x < .49f) {
+			rightDoor.position += Vector3.right * .2f / doorMovementTime * Time.deltaTime;
+			leftDoor.position += Vector3.left * .2f / doorMovementTime * Time.deltaTime;
+			float rightX = Mathf.Min(rightDoor.localPosition.x, .49f);
+			float leftX = Mathf.Max(leftDoor.localPosition.x, -.55f);
+			rightDoor.localPosition = new Vector3(rightX, rightDoor.localPosition.y, rightDoor.localPosition.z);
+			leftDoor.localPosition = new Vector3(leftX, leftDoor.localPosition.y, leftDoor.localPosition.z);
+			yield return null;
+		}
+		yield return null;
+	}
+
+	private IEnumerator CloseDoors() {
+		while(leftDoor.position.x < -.35f && rightDoor.position.x > .29f) {
+			rightDoor.position += Vector3.left * .2f / doorMovementTime * Time.deltaTime;
+			leftDoor.position += Vector3.right * .2f / doorMovementTime * Time.deltaTime;
+			float rightX = Mathf.Max(rightDoor.localPosition.x, .29f);
+			float leftX = Mathf.Min(leftDoor.localPosition.x, -.35f);
+			rightDoor.localPosition = new Vector3(rightX, rightDoor.localPosition.y, rightDoor.localPosition.z);
+			leftDoor.localPosition = new Vector3(leftX, leftDoor.localPosition.y, leftDoor.localPosition.z);
+			yield return null;
+		}
 		yield return null;
 	}
 

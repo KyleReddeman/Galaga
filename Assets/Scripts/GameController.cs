@@ -24,6 +24,7 @@ public class GameController : MonoBehaviour {
 	public float startDelay;
 	public float endDelay;
 	public GameObject healthDrop;
+	public GameObject boss1;
 
 	// Use this for initializat;ion
 	void Start() {
@@ -95,6 +96,8 @@ public class GameController : MonoBehaviour {
 		message.text = "Wave " + roundNumber;
 		previousPlayerHealth = healthController.GetPlayerHealth();
 		previousGroundHealth = healthController.GetGroundHealth();
+
+			
 		int numEnemies = 2 * roundNumber + 3;
 		float min = spawnEnemies.minSpawnTime - .2f;
 		float max = spawnEnemies.maxSpawnTime - .1f;
@@ -104,16 +107,30 @@ public class GameController : MonoBehaviour {
 		spawnEnemies.SetSpawnDelay(min, max);
 		spawnEnemies.SetMaxEnemies(numEnemies);
 		yield return startWait;
+		if(roundNumber == 1) {
+
+		}
 	}
 
 	private IEnumerator WavePlaying() {
-		roundNumber++;
 		message.text = "";
-		Invoke("Spawn", 2f);
-		while(!healthController.GameOver() && !spawnEnemies.NoEnemies()) {
-			yield return null;
+		if(roundNumber == 1) {	
+			GameObject redBoss = Instantiate(boss1, Vector3.zero + Vector3.up * 2.7f, Quaternion.identity);
+			Boss1Controller boss1Controller = redBoss.GetComponent<Boss1Controller>();
+			while(!boss1Controller.DefeatedBoss) {
+				yield return null;
+			}
+
 		}
-		spawnEnemies.ResetWaveEnemies();
+		else {
+			Invoke("Spawn", 2f);
+			while(!healthController.GameOver() && !spawnEnemies.NoEnemies()) {
+				yield return null;
+			}
+			spawnEnemies.ResetWaveEnemies();
+		}
+
+		roundNumber++;
 	}
 
 	private IEnumerator WaveEnding() {
