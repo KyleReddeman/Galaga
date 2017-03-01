@@ -589,7 +589,7 @@ GameObject:
   - component: {fileID: 415893437}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -600,7 +600,7 @@ AudioSource:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 415893431}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 243007302801825140, guid: 3e8a953feafa6ff408698f9e882f9634,
     type: 2}
@@ -761,6 +761,7 @@ MonoBehaviour:
   endDelay: 3
   healthDrop: {fileID: 1969781116043820, guid: 63f6cb5b7cbcc09439409d52dc021196, type: 2}
   boss1: {fileID: 1234988827690582, guid: 6f6372b7cf52ce4448cae440ed637894, type: 2}
+  mainMusic: {fileID: 8300000, guid: 513945925ad1e464bb2c5c66aad7ec22, type: 3}
 --- !u!1 &526094573
 GameObject:
   m_ObjectHideFlags: 0

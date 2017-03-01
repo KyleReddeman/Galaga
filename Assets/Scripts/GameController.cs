@@ -15,6 +15,7 @@ public class GameController : MonoBehaviour {
 	private Dictionary<string, int> enemiesKilled;
 	private float previousPlayerHealth;
 	private float previousGroundHealth;
+	private AudioSource music;
      
 	public Text message;
 	public Text enemyStats;
@@ -25,6 +26,7 @@ public class GameController : MonoBehaviour {
 	public float endDelay;
 	public GameObject healthDrop;
 	public GameObject boss1;
+	public AudioClip mainMusic;
 
 	// Use this for initializat;ion
 	void Start() {

@@ -12,7 +12,11 @@ public class Boss1Controller : MonoBehaviour {
 	public Transform leftDoor;
 	public Transform rightDoor;
 	public GameObject[] enemies;
+	public AudioClip battleMusic;
+	public AudioClip spaceShip;
 
+	private AudioSource music;
+	private GameObject gameManager;
 	private Light shipGlow;
 	private Light coreGlow;
 	private Rigidbody2D rigid;
@@ -26,6 +30,8 @@ public class Boss1Controller : MonoBehaviour {
 	}
 
 	void Awake() {
+		gameManager = GameObject.FindWithTag("GameController");
+		music = gameManager.GetComponent<AudioSource>();
 		rigid = gameObject.GetComponent<Rigidbody2D>();
 		leftDoorRigid = leftDoor.gameObject.GetComponent<Rigidbody2D>();
 		rightDoorRigid = rightDoor.gameObject.GetComponent<Rigidbody2D>();
@@ -42,6 +48,9 @@ public class Boss1Controller : MonoBehaviour {
 	}
 
 	void Start () {
+		music.volume = 1f;
+		music.clip = spaceShip;
+		music.Play();
 		StartCoroutine(BossLoop());
 	}
 	
@@ -58,24 +67,24 @@ public class Boss1Controller : MonoBehaviour {
 	}
 
 	private IEnumerator BossLoop() {
-		rigid.velocity = Vector2.down * .15f;
 		yield return StartCoroutine(EnterScene());
-
-		yield return StartCoroutine(BattleEnemy());
+		music.clip = battleMusic;
+		music.Play();
+		yield return StartCoroutine(BattleLoop());
 	}
 
 	private IEnumerator EnterScene() {
 		while(!EnteredScene()) {
 			yield return null;
 		}
-		rigid.velocity = Vector2.zero;
 	}
 
-	private IEnumerator BattleEnemy() {
+	private IEnumerator BattleLoop() {
 		yield return new WaitForSeconds(2f);
 		while(true) {
 			yield return StartCoroutine(OpenDoors());
-			yield return new WaitForSeconds(2f);
+			yield return StartCoroutine(SpawnEnemy());
+			yield return new WaitForSeconds(1f);
 			yield return StartCoroutine(CloseDoors());
 			yield return new WaitForSeconds(2f);
 		}
@@ -134,13 +143,17 @@ public class Boss1Controller : MonoBehaviour {
 	}
 
 	private bool EnteredScene() {
-		
+		transform.position += Vector3.down * 1.3f / enteranceTime * Time.deltaTime;
 		float y = Mathf.Max(transform.position.y, 1.4f);
 		float x = Scale(0f, 1.3f, 0f, 2 * Mathf.PI, 2.7f - transform.position.y);
 		float rangeValue = Scale(-1f, 1f, 1.5f, 3f, Mathf.Sin(glowCycles * x));
 		shipGlow.range = rangeValue;
 		transform.position = new Vector3(transform.position.x, y, transform.position.z);
 		return transform.position.y <= 1.4f;
+	}
+
+	private void OnTriggerEnter2D(Collider2D other) {
+		Debug.Log("Yeah");
 	}
 
 

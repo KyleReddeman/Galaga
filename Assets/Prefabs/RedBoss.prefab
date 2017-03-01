@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4502809751339308}
   - component: {fileID: 114214960183776360}
+  - component: {fileID: 114732103662809960}
   - component: {fileID: 50205757604358426}
   - component: {fileID: 108913759473360064}
   - component: {fileID: 82717696020477998}
@@ -55,6 +56,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4226535046517686}
   - component: {fileID: 212929292183892762}
+  - component: {fileID: 50110021131585848}
+  - component: {fileID: 61628010072897532}
+  - component: {fileID: 61290437291961156}
   m_Layer: 0
   m_Name: BodyBoss1
   m_TagString: Untagged
@@ -106,6 +110,8 @@ GameObject:
   - component: {fileID: 4991097727046288}
   - component: {fileID: 212055194885046572}
   - component: {fileID: 108717886166885202}
+  - component: {fileID: 50210033955716674}
+  - component: {fileID: 61336616065682404}
   m_Layer: 0
   m_Name: CoreBoss1
   m_TagString: Respawn
@@ -228,6 +234,26 @@ Transform:
   m_Father: {fileID: 4502809751339308}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50110021131585848
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1313848997019118}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!50 &50205757604358426
 Rigidbody2D:
   serializedVersion: 4
@@ -243,6 +269,26 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!50 &50210033955716674
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1518039702590910}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -302,6 +348,48 @@ BoxCollider2D:
   m_Offset: {x: 0.008, y: -0}
   serializedVersion: 2
   m_Size: {x: 0.637, y: 0.13}
+--- !u!61 &61290437291961156
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1313848997019118}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: -0.72, y: -0.28}
+  serializedVersion: 2
+  m_Size: {x: 0.45, y: 0.01}
+--- !u!61 &61336616065682404
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1518039702590910}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0.09}
+  serializedVersion: 2
+  m_Size: {x: 0.33, y: 0.01}
+--- !u!61 &61628010072897532
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1313848997019118}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0.728, y: -0.28}
+  serializedVersion: 2
+  m_Size: {x: 0.45, y: 0.01}
 --- !u!61 &61684087371913196
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -324,7 +412,7 @@ AudioSource:
   m_GameObject: {fileID: 1234988827690582}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 243066336377025968, guid: 3e8a953feafa6ff408698f9e882f9634,
+  OutputAudioMixerGroup: {fileID: 243007302801825140, guid: 3e8a953feafa6ff408698f9e882f9634,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 0d31741abd7590f46b4e51fc2520b707, type: 3}
   m_PlayOnAwake: 1
@@ -477,14 +565,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackMovementSpeed: 0
-  enteranceTime: 10
-  doorMovementTime: 2
+  enteranceTime: 25
+  doorMovementTime: 1
   glowCycles: 5
   leftDoor: {fileID: 4155387454915252}
   rightDoor: {fileID: 4627493035850806}
   enemies:
   - {fileID: 1420858921499370, guid: 416714e02d521c041b4b8e6f1593bdde, type: 2}
   - {fileID: 1420858921499370, guid: dbdcc5db617e7164d9481d6da6c4e79b, type: 2}
+  battleMusic: {fileID: 8300000, guid: 190eb766caee66c47a7fa1dcdc01f01f, type: 3}
+  spaceShip: {fileID: 0}
+--- !u!114 &114732103662809960
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1234988827690582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5541ea4876f9ce479e02fe24c0cc775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212055194885046572
 SpriteRenderer:
   m_ObjectHideFlags: 1
