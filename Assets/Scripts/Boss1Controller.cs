@@ -16,6 +16,7 @@ public class Boss1Controller : MonoBehaviour {
 	public AudioClip spaceShip;
 
 	private AudioSource music;
+	private Boss1Attacks boss1Attacks;
 	private GameObject gameManager;
 	private Light shipGlow;
 	private Light coreGlow;
@@ -23,6 +24,7 @@ public class Boss1Controller : MonoBehaviour {
 	private Rigidbody2D leftDoorRigid;
 	private Rigidbody2D rightDoorRigid;
 	private bool defeatedBoss;
+
 	public bool DefeatedBoss {
 		get {
 			return defeatedBoss;
@@ -30,6 +32,7 @@ public class Boss1Controller : MonoBehaviour {
 	}
 
 	void Awake() {
+		boss1Attacks = GetComponent<Boss1Attacks>();
 		gameManager = GameObject.FindWithTag("GameController");
 		music = gameManager.GetComponent<AudioSource>();
 		rigid = gameObject.GetComponent<Rigidbody2D>();
@@ -81,12 +84,15 @@ public class Boss1Controller : MonoBehaviour {
 
 	private IEnumerator BattleLoop() {
 		yield return new WaitForSeconds(2f);
+		boss1Attacks.Up();
 		while(true) {
-			yield return StartCoroutine(OpenDoors());
-			yield return StartCoroutine(SpawnEnemy());
-			yield return new WaitForSeconds(1f);
-			yield return StartCoroutine(CloseDoors());
-			yield return new WaitForSeconds(2f);
+//			yield return StartCoroutine(OpenDoors());
+//			yield return StartCoroutine(SpawnEnemy());
+//			yield return new WaitForSeconds(1f);
+//			yield return StartCoroutine(CloseDoors());
+//			yield return new WaitForSeconds(2f);
+			yield return null;
+
 		}
 	}
 
