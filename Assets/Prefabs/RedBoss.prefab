@@ -565,7 +565,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackMovementSpeed: 0
-  enteranceTime: 25
+  enteranceTime: 10
   doorMovementTime: 1
   glowCycles: 5
   leftDoor: {fileID: 4155387454915252}
