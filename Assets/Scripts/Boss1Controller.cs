@@ -84,19 +84,14 @@ public class Boss1Controller : MonoBehaviour {
 
 	private IEnumerator BattleLoop() {
 		yield return new WaitForSeconds(2f);
-		boss1Attacks.Up();
-		while(true) {
-//			yield return StartCoroutine(OpenDoors());
-//			yield return StartCoroutine(SpawnEnemy());
-//			yield return new WaitForSeconds(1f);
-//			yield return StartCoroutine(CloseDoors());
-//			yield return new WaitForSeconds(2f);
-			yield return null;
 
+		while(true) {
+			yield return StartCoroutine(boss1Attacks.SweepFromRight());
+			yield return new WaitForSeconds(2f);
 		}
 	}
 
-	private IEnumerator SpawnEnemy() {
+	public IEnumerator SpawnEnemy() {
 		while(Spawning()) {
 			yield return null;
 		}
@@ -111,11 +106,11 @@ public class Boss1Controller : MonoBehaviour {
 		yield return null;
 	}
 
-	private IEnumerator OpenDoors() {
+	public IEnumerator OpenDoors() {
 		
-		while(leftDoor.position.x > -.55f && rightDoor.position.x < .49f) {
-			rightDoor.position += Vector3.right * .2f / doorMovementTime * Time.deltaTime;
-			leftDoor.position += Vector3.left * .2f / doorMovementTime * Time.deltaTime;
+		while(leftDoor.localPosition.x > -.55f && rightDoor.localPosition.x < .49f) {
+			rightDoor.localPosition += Vector3.right * .2f / doorMovementTime * Time.deltaTime;
+			leftDoor.localPosition += Vector3.left * .2f / doorMovementTime * Time.deltaTime;
 			float rightX = Mathf.Min(rightDoor.localPosition.x, .49f);
 			float leftX = Mathf.Max(leftDoor.localPosition.x, -.55f);
 			rightDoor.localPosition = new Vector3(rightX, rightDoor.localPosition.y, rightDoor.localPosition.z);
@@ -125,10 +120,11 @@ public class Boss1Controller : MonoBehaviour {
 		yield return null;
 	}
 
-	private IEnumerator CloseDoors() {
-		while(leftDoor.position.x < -.35f && rightDoor.position.x > .29f) {
-			rightDoor.position += Vector3.left * .2f / doorMovementTime * Time.deltaTime;
-			leftDoor.position += Vector3.right * .2f / doorMovementTime * Time.deltaTime;
+	public IEnumerator CloseDoors() {
+		Debug.Log("mehhh");
+		while(leftDoor.localPosition.x < -.35f && rightDoor.localPosition.x > .29f) {
+			rightDoor.localPosition += Vector3.left * .2f / doorMovementTime * Time.deltaTime;
+			leftDoor.localPosition += Vector3.right * .2f / doorMovementTime * Time.deltaTime;
 			float rightX = Mathf.Max(rightDoor.localPosition.x, .29f);
 			float leftX = Mathf.Min(leftDoor.localPosition.x, -.35f);
 			rightDoor.localPosition = new Vector3(rightX, rightDoor.localPosition.y, rightDoor.localPosition.z);

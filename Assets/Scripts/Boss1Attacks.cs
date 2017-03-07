@@ -9,23 +9,43 @@ public class Boss1Attacks : MonoBehaviour {
 		boss1Controller = gameObject.GetComponent<Boss1Controller>();
 	}
 
-	private void SweepFromLeft() {
-		
+	public IEnumerator SweepFromLeft() {
+		yield return null;
 	}
 
-	private void SweepFromRight() {
-		
+	public IEnumerator SweepFromRight() {
+		yield return StartCoroutine(GoToLocation(new Vector3(0f, 2.5f, 0f), 2f));
+		StartCoroutine(boss1Controller.OpenDoors());
+		yield return StartCoroutine(GoToLocation(new Vector3(-4f, 2.5f, 0f), 1f));
+		yield return StartCoroutine(GoToLocation(new Vector3(-4f, 1.4f, 0f), .1f));
+		StartCoroutine(GoToLocation(new Vector3(4f, 1.4f, 0f), 10f));
+		for(int i = 0; i < 10; i++) {
+			yield return StartCoroutine(boss1Controller.SpawnEnemy());
+			yield return new WaitForSeconds(1f);
+		}
+		yield return StartCoroutine(GoToLocation(new Vector3(0f, 1.4f, 0f), .5f));
+		yield return StartCoroutine(boss1Controller.CloseDoors());
 	}
 
-	private void RandomSpawning() {
-		 
+	public IEnumerator RandomSpawning() {
+		yield return null;
 	}
 
-	public void Up() {
-		StartCoroutine(GoUp());
+	public IEnumerator GoToLocation(Vector3 destination, float time) {
+		Vector3 direction = (destination - transform.position);
+		float distance = direction.magnitude;
+		direction.Normalize();
+		while(transform.position != destination) {
+			transform.position += direction * distance / time * Time.deltaTime; 
+			if((destination - transform.position).normalized != direction) {
+				transform.position = destination;
+			}
+			Debug.Log(transform.position + "..." + destination);
+			yield return null;
+		}
+		yield return null;
 	}
-
-	private IEnumerator GoUp() {
+	public IEnumerator GoUp() {
 		float height = 2.5f;
 		float distance = Mathf.Abs(height - transform.position.y);
 		float time = 1.8f;
